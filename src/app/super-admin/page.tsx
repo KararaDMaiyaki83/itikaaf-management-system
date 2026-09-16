@@ -498,11 +498,11 @@ export default function SuperAdminPage() {
     : '10.0';
 
   return (
-    <div className="min-h-screen bg-stone-100 py-8 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-stone-100 py-6 sm:py-8 px-3.5 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto space-y-6">
 
         {/* TOP NATIONWIDE COMMAND BANNER */}
-        <div className="bg-gradient-to-r from-emerald-950 via-emerald-900 to-emerald-950 text-white rounded-2xl p-6 sm:p-8 shadow-xl border-2 border-amber-400/40 relative overflow-hidden">
+        <div className="bg-gradient-to-r from-emerald-950 via-emerald-900 to-emerald-950 text-white rounded-2xl p-4 sm:p-8 shadow-xl border-2 border-amber-400/40 relative overflow-hidden">
           <div className="relative z-10 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
             <div>
               <div className="flex flex-wrap items-center gap-2 mb-3">
@@ -515,7 +515,7 @@ export default function SuperAdminPage() {
                   <span>Powered by <strong className="text-white">GetoCore Digital Innovation</strong></span>
                 </div>
               </div>
-              <h1 className="text-2xl sm:text-3xl lg:text-4xl font-black tracking-tight flex items-center gap-3">
+              <h1 className="text-xl sm:text-3xl lg:text-4xl font-black tracking-tight flex items-center gap-3">
                 <span>Nigeria National Super Admin</span>
                 <span className="text-amber-400 font-arabic text-2xl font-normal hidden sm:inline">مجلس الإشراف الوطني العام</span>
               </h1>

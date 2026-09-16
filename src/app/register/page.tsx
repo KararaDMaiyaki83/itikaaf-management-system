@@ -530,7 +530,7 @@ function RegisterContent() {
   const currentSelectedMasjid = masaajid.find(m => m.id === selectedMasjidId) || masaajid[0];
 
   return (
-    <div className="min-h-screen bg-stone-50 py-8 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-stone-50 py-6 sm:py-8 px-3.5 sm:px-6 lg:px-8">
       <div className="max-w-4xl mx-auto space-y-6">
         
         {/* Header Title */}
@@ -1100,7 +1100,7 @@ function RegisterContent() {
                           <span>Tier 1: Filter by Nigerian State (اختر الولاية):</span>
                         </label>
                         {/* State Dropdown Selector for all 36 States + FCT */}
-                        <div className="flex items-center gap-2">
+                        <div className="flex flex-wrap items-center gap-2">
                           <span className="text-[11px] text-stone-500 font-semibold">All 36 States + FCT:</span>
                           <select
                             value={selectedStateFilter}
@@ -1108,7 +1108,7 @@ function RegisterContent() {
                               setSelectedStateFilter(e.target.value);
                               setSelectedLgaFilter('All LGAs');
                             }}
-                            className="text-xs font-bold py-1 px-2.5 rounded-lg border border-emerald-300 bg-white text-emerald-950 focus:ring-2 focus:ring-emerald-600 focus:outline-none cursor-pointer"
+                            className="text-xs font-bold py-1 px-2.5 rounded-lg border border-emerald-300 bg-white text-emerald-950 focus:ring-2 focus:ring-emerald-600 focus:outline-none cursor-pointer max-w-full"
                           >
                             <option value="All States">All Nigeria (36 States + FCT)</option>
                             {ALL_NIGERIAN_STATES.map((st) => (

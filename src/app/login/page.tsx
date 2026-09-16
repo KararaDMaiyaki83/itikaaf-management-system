@@ -278,39 +278,8 @@ function LoginContent() {
       {/* Background Ambience / Islamic Geometric Glow */}
       <div className="fixed inset-0 pointer-events-none opacity-20 bg-[radial-gradient(#10b981_1px,transparent_1px)] [background-size:24px_24px]"></div>
 
-      {/* Main Header / Top Bar */}
-      <div className="relative z-10 border-b border-stone-800 bg-stone-950/80 backdrop-blur-md px-4 sm:px-8 py-3.5 flex items-center justify-between">
-        <Link href="/" className="flex items-center gap-3">
-          <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-emerald-600 to-emerald-900 flex items-center justify-center shadow-lg border border-emerald-500/40">
-            <Building2 className="w-5 h-5 text-amber-300" />
-          </div>
-          <div>
-            <div className="flex items-center gap-2">
-              <span className="font-extrabold text-white text-sm sm:text-base tracking-tight">I’tikāf National Portal</span>
-              <span className="text-[10px] bg-emerald-900/60 text-emerald-300 border border-emerald-700/60 px-2 py-0.5 rounded-full font-arabic">
-                تسجيل الدخول
-              </span>
-            </div>
-            <p className="text-[11px] text-stone-400">Federal Republic of Nigeria • 36 States + FCT Abuja</p>
-          </div>
-        </Link>
-
-        <div className="flex items-center gap-3">
-          <span className="hidden sm:inline-flex items-center gap-1.5 text-[11px] bg-stone-900 border border-stone-800 text-stone-300 px-3 py-1 rounded-full">
-            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-            <span>Powered by <strong>GetoCore Digital Innovation</strong></span>
-          </span>
-          <Link 
-            href="/register" 
-            className="text-xs font-bold text-amber-400 hover:text-amber-300 bg-amber-950/60 hover:bg-amber-950 border border-amber-800/80 px-3.5 py-1.5 rounded-xl transition-all"
-          >
-            New Applicant? Register
-          </Link>
-        </div>
-      </div>
-
       {/* Main Content Area */}
-      <div className="relative z-10 flex-1 flex items-center justify-center p-4 sm:p-6 lg:p-8">
+      <div className="relative z-10 flex-1 flex items-center justify-center p-3.5 sm:p-6 lg:p-8 py-6 sm:py-10">
         <div className="w-full max-w-2xl bg-stone-950 border border-stone-800 shadow-2xl rounded-3xl overflow-hidden backdrop-blur-xl">
           
           {/* Header Banner */}

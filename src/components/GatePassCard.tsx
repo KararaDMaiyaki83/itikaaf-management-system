@@ -99,7 +99,7 @@ export default function GatePassCard({ participant, dars, masjid }: GatePassCard
   const theme = getDarThemeStyles();
 
   return (
-    <div className="gate-pass-badge-wrapper select-none max-w-sm mx-auto bg-white rounded-2xl border-2 border-emerald-900 shadow-2xl overflow-hidden relative">
+    <div className="gate-pass-badge-wrapper select-none w-full max-w-sm mx-auto bg-white rounded-2xl border-2 border-emerald-900 shadow-2xl overflow-hidden relative">
       
       {/* Visual Lanyard Punch Hole Indicator */}
       <div className="bg-emerald-950 flex justify-center py-2 border-b border-emerald-800">
@@ -312,7 +312,7 @@ export default function GatePassCard({ participant, dars, masjid }: GatePassCard
             <span className="font-mono text-emerald-900 font-bold tracking-wider">{darMemberId}</span>
           </div>
           <div 
-            className="flex justify-center my-0.5 overflow-hidden"
+            className="flex justify-center my-0.5 overflow-hidden max-w-full [&>svg]:max-w-full [&>svg]:h-auto"
             dangerouslySetInnerHTML={{ __html: barcodeSvg }}
           />
           <span className="block text-[8px] font-mono text-stone-400">

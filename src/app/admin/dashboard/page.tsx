@@ -235,7 +235,7 @@ function DashboardContent() {
   };
 
   return (
-    <div className="min-h-screen bg-stone-50 py-8 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-stone-50 py-6 sm:py-8 px-3.5 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto space-y-6">
         
         {/* Dashboard Title & Multi-Year Selector */}
@@ -245,23 +245,23 @@ function DashboardContent() {
               <ShieldCheck className="w-3.5 h-3.5 text-emerald-700" />
               <span>Multi-Year Central Committee Administration</span>
             </div>
-            <h1 className="text-2xl sm:text-3xl font-bold text-stone-900 tracking-tight flex items-center gap-2">
+            <h1 className="text-xl sm:text-2xl lg:text-3xl font-bold text-stone-900 tracking-tight flex items-center gap-2">
               <span>I’tikāf Committee Dashboard</span>
             </h1>
-            <p className="text-xs text-stone-600">
+            <p className="text-xs text-stone-600 mt-0.5">
               Annual program records, veteran participant profiles, Dār balancing, and Musalla floor spaces.
             </p>
           </div>
 
-          <div className="flex flex-wrap items-center gap-2.5">
+          <div className="flex flex-wrap items-center gap-2 sm:gap-2.5 w-full sm:w-auto">
             {/* Mosque Selector Dropdown (LGA by LGA) */}
-            <div className="flex items-center gap-1.5 bg-white border-2 border-emerald-700 rounded-xl px-3 py-1.5 shadow-sm">
-              <Building2 className="w-4 h-4 text-emerald-800" />
-              <span className="text-[11px] font-bold text-stone-700 uppercase">Mosque:</span>
+            <div className="flex items-center gap-1.5 bg-white border-2 border-emerald-700 rounded-xl px-2.5 py-1.5 shadow-sm max-w-full flex-1 sm:flex-initial">
+              <Building2 className="w-4 h-4 text-emerald-800 flex-shrink-0" />
+              <span className="text-[11px] font-bold text-stone-700 uppercase flex-shrink-0">Mosque:</span>
               <select
                 value={selectedMasjidFilter}
                 onChange={(e) => setSelectedMasjidFilter(e.target.value)}
-                className="text-xs font-bold text-emerald-950 bg-transparent focus:outline-none cursor-pointer max-w-[200px] truncate"
+                className="text-xs font-bold text-emerald-950 bg-transparent focus:outline-none cursor-pointer w-full max-w-[180px] sm:max-w-[200px] truncate"
               >
                 <option value="all">All Kaduna Mosques</option>
                 {Array.from(new Set(masaajid.map(m => m.lga))).map((lga) => (
@@ -277,34 +277,34 @@ function DashboardContent() {
             </div>
 
             {/* Multi-Year Archives Selector Dropdown */}
-            <div className="flex items-center gap-1.5 bg-white border-2 border-emerald-700 rounded-xl px-3 py-1.5 shadow-sm">
-              <Calendar className="w-4 h-4 text-emerald-800" />
-              <span className="text-[11px] font-bold text-stone-700 uppercase">Year:</span>
+            <div className="flex items-center gap-1.5 bg-white border-2 border-emerald-700 rounded-xl px-2.5 py-1.5 shadow-sm flex-shrink-0">
+              <Calendar className="w-4 h-4 text-emerald-800 flex-shrink-0" />
+              <span className="text-[11px] font-bold text-stone-700 uppercase flex-shrink-0">Year:</span>
               <select
                 value={selectedYear}
                 onChange={(e) => setSelectedYear(e.target.value)}
                 className="text-xs font-bold text-emerald-950 bg-transparent focus:outline-none cursor-pointer"
               >
-                <option value="1447">1447 AH (2026) [Active]</option>
-                <option value="1446">1446 AH (2025) [Archived]</option>
-                <option value="all">All Historical Records</option>
+                <option value="1447">1447 AH [Active]</option>
+                <option value="1446">1446 AH [Archived]</option>
+                <option value="all">All Records</option>
               </select>
             </div>
 
             <Link
               href="/admin/daars"
-              className="inline-flex items-center gap-1.5 bg-emerald-900 hover:bg-emerald-950 text-amber-300 px-4 py-2 rounded-xl text-xs font-bold shadow-sm transition-all border border-emerald-700"
+              className="inline-flex items-center justify-center gap-1.5 bg-emerald-900 hover:bg-emerald-950 text-amber-300 px-3.5 py-2 rounded-xl text-xs font-bold shadow-sm transition-all border border-emerald-700 flex-1 sm:flex-initial"
             >
               <Crown className="w-4 h-4 text-amber-300" />
-              <span>4 Dārs & Ameers</span>
+              <span>4 Dārs</span>
             </Link>
 
             <Link
               href="/pass"
-              className="inline-flex items-center gap-1.5 bg-white hover:bg-stone-100 text-stone-800 px-3.5 py-2 rounded-xl text-xs font-semibold border border-stone-300 shadow-sm transition-colors"
+              className="inline-flex items-center justify-center gap-1.5 bg-white hover:bg-stone-100 text-stone-800 px-3 py-2 rounded-xl text-xs font-semibold border border-stone-300 shadow-sm transition-colors flex-1 sm:flex-initial"
             >
               <QrCode className="w-4 h-4 text-emerald-700" />
-              <span>Gate Terminal</span>
+              <span>Gate</span>
             </Link>
           </div>
         </div>

@@ -3,6 +3,10 @@
 @tailwind utilities;
 
 @layer base {
+  html, body {
+    max-width: 100vw;
+    overflow-x: hidden;
+  }
   body {
     @apply text-stone-900 bg-stone-50 antialiased;
     font-feature-settings: "cv02", "cv03", "cv04", "cv11";

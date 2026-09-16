@@ -257,22 +257,22 @@ export default function HeadcountPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-stone-100 py-8 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-stone-100 py-6 sm:py-8 px-3.5 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto space-y-6">
 
         {/* TOP HEADER BANNER */}
-        <div className="bg-emerald-950 text-white rounded-2xl p-6 shadow-xl border border-emerald-800/80">
+        <div className="bg-emerald-950 text-white rounded-2xl p-4 sm:p-6 shadow-xl border border-emerald-800/80">
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
             <div>
               <div className="flex items-center gap-2 text-xs font-semibold text-emerald-300 uppercase tracking-widest mb-1">
                 <ScanLine className="w-4 h-4 text-amber-400" />
                 <span>Real-Time Barcode & Unique Dār ID Terminal</span>
               </div>
-              <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight flex items-center gap-2">
+              <h1 className="text-xl sm:text-2xl lg:text-3xl font-extrabold tracking-tight flex items-center gap-2 flex-wrap">
                 <span>Dār Headcount Scanner</span>
-                <span className="text-amber-400 font-arabic text-xl font-normal">نظام حصر وتسجيل المعتكفين</span>
+                <span className="text-amber-400 font-arabic text-lg sm:text-xl font-normal">نظام حصر وتسجيل المعتكفين</span>
               </h1>
-              <p className="text-sm text-emerald-200 mt-1 max-w-2xl">
+              <p className="text-xs sm:text-sm text-emerald-200 mt-1 max-w-2xl">
                 Scan attendee ID badges via laser barcode scanner gun or camera. Automatically records headcounts per Dār for Suhur, Iftar, Tahajjud halaqat, and Gate verification.
               </p>
             </div>
@@ -345,8 +345,8 @@ export default function HeadcountPage() {
                 Scan Badge Barcode / Enter Unique Dār ID (e.g. ABK-1447-0101)
               </label>
               <div className="relative flex items-center shadow-sm rounded-xl overflow-hidden border-2 border-emerald-800 focus-within:ring-4 focus-within:ring-emerald-500/20">
-                <div className="pl-4 pr-2 text-emerald-800">
-                  <Barcode className="w-6 h-6 animate-pulse" />
+                <div className="pl-3 sm:pl-4 pr-1 sm:pr-2 text-emerald-800 flex-shrink-0">
+                  <Barcode className="w-5 h-5 sm:w-6 sm:h-6 animate-pulse" />
                 </div>
                 <input
                   ref={inputRef}
@@ -354,13 +354,13 @@ export default function HeadcountPage() {
                   value={barcodeInput}
                   onChange={(e) => setBarcodeInput(e.target.value)}
                   onKeyDown={handleKeyDown}
-                  placeholder="Focus here & scan badge with barcode gun, or type ID..."
-                  className="w-full py-3.5 px-2 text-stone-900 text-base sm:text-lg font-mono font-bold tracking-wider placeholder:text-stone-400 placeholder:font-sans focus:outline-none"
+                  placeholder="Scan badge with scanner, or type ID..."
+                  className="w-full py-3 sm:py-3.5 px-2 text-stone-900 text-sm sm:text-lg font-mono font-bold tracking-wider placeholder:text-stone-400 placeholder:font-sans focus:outline-none min-w-0"
                 />
                 <button
                   onClick={() => handleScanSubmit()}
                   disabled={!barcodeInput.trim()}
-                  className="h-full px-6 bg-emerald-800 hover:bg-emerald-900 disabled:bg-stone-300 text-white font-bold text-sm transition-colors flex items-center gap-1.5 flex-shrink-0"
+                  className="h-full px-4 sm:px-6 bg-emerald-800 hover:bg-emerald-900 disabled:bg-stone-300 text-white font-bold text-xs sm:text-sm transition-colors flex items-center gap-1.5 flex-shrink-0"
                 >
                   <ScanLine className="w-4 h-4" />
                   <span>Scan</span>
