@@ -664,8 +664,62 @@ export function resetToDefaultData(): void {
   localStorage.setItem(MASAAJID_STORAGE_KEY, JSON.stringify(INITIAL_MASAAJID));
   localStorage.setItem(ACTIVE_MASJID_STORAGE_KEY, 'sultan-bello');
   localStorage.removeItem(HEADCOUNT_STORAGE_KEY);
+  localStorage.removeItem(AUTH_SESSION_STORAGE_KEY);
   window.dispatchEvent(new Event('itikaaf_data_changed'));
   window.dispatchEvent(new Event('itikaaf_headcount_changed'));
   window.dispatchEvent(new Event('itikaaf_masaajid_changed'));
   window.dispatchEvent(new Event('itikaaf_active_masjid_changed'));
+  window.dispatchEvent(new Event('itikaaf_auth_changed'));
+}
+
+// =========================================================================
+// UNIFIED AUTHENTICATION & SESSION MANAGEMENT
+// =========================================================================
+
+export interface AuthUserSession {
+  role: 'participant' | 'masjid_coordinator' | 'community_volunteer' | 'super_admin';
+  name: string;
+  emailOrPhone?: string;
+  masjidId?: string;
+  masjidName?: string;
+  masjidState?: string;
+  masjidLga?: string;
+  trackingCode?: string;
+  darId?: string;
+  darMemberId?: string;
+  adminRole?: string;
+  volunteerDuty?: string;
+  loggedInAt: string;
+}
+
+export const AUTH_SESSION_STORAGE_KEY = 'itikaaf_auth_session';
+
+export function getStoredAuthSession(): AuthUserSession | null {
+  if (typeof window === 'undefined') return null;
+  try {
+    const raw = localStorage.getItem(AUTH_SESSION_STORAGE_KEY);
+    return raw ? JSON.parse(raw) : null;
+  } catch {
+    return null;
+  }
+}
+
+export function saveAuthSession(session: AuthUserSession): void {
+  if (typeof window === 'undefined') return;
+  try {
+    localStorage.setItem(AUTH_SESSION_STORAGE_KEY, JSON.stringify(session));
+    window.dispatchEvent(new Event('itikaaf_auth_changed'));
+  } catch (err) {
+    console.error('Failed saving auth session', err);
+  }
+}
+
+export function clearAuthSession(): void {
+  if (typeof window === 'undefined') return;
+  try {
+    localStorage.removeItem(AUTH_SESSION_STORAGE_KEY);
+    window.dispatchEvent(new Event('itikaaf_auth_changed'));
+  } catch (err) {
+    console.error('Failed clearing auth session', err);
+  }
 }

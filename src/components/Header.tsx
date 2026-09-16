@@ -14,9 +14,20 @@ import {
   LayoutDashboard,
   ScanLine,
   MapPin,
-  ChevronDown
+  ChevronDown,
+  LogIn,
+  LogOut,
+  UserCheck
 } from 'lucide-react';
-import { resetToDefaultData, getStoredMasaajid, getActiveMasjid, setActiveMasjidId } from '../lib/storage';
+import { 
+  resetToDefaultData, 
+  getStoredMasaajid, 
+  getActiveMasjid, 
+  setActiveMasjidId,
+  getStoredAuthSession,
+  clearAuthSession,
+  AuthUserSession
+} from '../lib/storage';
 import { Masjid, KadunaLGA } from '../types/itikaaf';
 import { INITIAL_MASAAJID } from '../data/initialData';
 
@@ -25,11 +36,13 @@ export default function Header() {
   const router = useRouter();
   const [masaajid, setMasaajid] = useState<Masjid[]>(INITIAL_MASAAJID);
   const [activeMasjid, setActiveMasjidState] = useState<Masjid>(INITIAL_MASAAJID[0]);
+  const [authSession, setAuthSession] = useState<AuthUserSession | null>(null);
 
   const loadHeaderData = () => {
     const list = getStoredMasaajid();
     setMasaajid(list);
     setActiveMasjidState(getActiveMasjid());
+    setAuthSession(getStoredAuthSession());
   };
 
   useEffect(() => {
@@ -38,10 +51,12 @@ export default function Header() {
     window.addEventListener('itikaaf_active_masjid_changed', handler);
     window.addEventListener('itikaaf_masaajid_changed', handler);
     window.addEventListener('itikaaf_data_changed', handler);
+    window.addEventListener('itikaaf_auth_changed', handler);
     return () => {
       window.removeEventListener('itikaaf_active_masjid_changed', handler);
       window.removeEventListener('itikaaf_masaajid_changed', handler);
       window.removeEventListener('itikaaf_data_changed', handler);
+      window.removeEventListener('itikaaf_auth_changed', handler);
     };
   }, []);
 
@@ -193,6 +208,41 @@ export default function Header() {
               </Link>
             );
           })}
+
+          {/* Unified Login / Active Session */}
+          {authSession ? (
+            <div className="flex items-center gap-1.5 bg-emerald-900/90 border border-emerald-700/80 px-2.5 py-1 rounded-lg text-xs">
+              <UserCheck className="w-3.5 h-3.5 text-amber-300 flex-shrink-0" />
+              <div className="flex flex-col text-[11px] leading-tight max-w-[100px] truncate">
+                <span className="text-white font-bold truncate">{authSession.name}</span>
+                <span className="text-emerald-300/80 text-[9px] truncate">
+                  {authSession.role === 'participant' ? 'Mutakif' : authSession.role === 'super_admin' ? 'Super Admin' : 'Staff'}
+                </span>
+              </div>
+              <button
+                onClick={() => {
+                  clearAuthSession();
+                  router.push('/');
+                }}
+                title="Sign Out"
+                className="text-emerald-300 hover:text-rose-300 ml-1 p-0.5 rounded transition-colors"
+              >
+                <LogOut className="w-3.5 h-3.5" />
+              </button>
+            </div>
+          ) : (
+            <Link
+              href="/login"
+              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition-all ${
+                pathname === '/login'
+                  ? 'bg-amber-400 text-stone-950 shadow-md ring-2 ring-amber-300'
+                  : 'bg-emerald-700 hover:bg-emerald-600 text-white border border-emerald-500 shadow-sm'
+              }`}
+            >
+              <LogIn className="w-3.5 h-3.5 text-amber-300" />
+              <span>Sign In</span>
+            </Link>
+          )}
         </nav>
       </div>
     </header>
